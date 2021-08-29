@@ -1,7 +1,7 @@
 {
   "name": "express-clean-logger",
   "version": "0.1.0",
-  "description": "A fast logger with most useful information output by default",
+  "description": "A fast logger for ExpressJS with useful information cleanly shown",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
