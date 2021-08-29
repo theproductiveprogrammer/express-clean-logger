@@ -1,0 +1,24 @@
+{
+  "name": "express-clean-logger",
+  "version": "0.1.0",
+  "description": "A fast logger with most useful information output by default",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theproductiveprogrammer/express-clean-logger.git"
+  },
+  "keywords": [
+    "expressjs",
+    "logger",
+    "http"
+  ],
+  "author": "charles.lobo@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theproductiveprogrammer/express-clean-logger/issues"
+  },
+  "homepage": "https://github.com/theproductiveprogrammer/express-clean-logger#readme"
+}
