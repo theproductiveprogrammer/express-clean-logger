@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/theproductiveprogrammer/express-clean-logger/issues"
   },
-  "homepage": "https://github.com/theproductiveprogrammer/express-clean-logger#readme"
+  "homepage": "https://github.com/theproductiveprogrammer/express-clean-logger#readme",
+  "devDependencies": {
+    "express": "^4.17.1"
+  }
 }
