@@ -23,5 +23,8 @@
   "homepage": "https://github.com/theproductiveprogrammer/express-clean-logger#readme",
   "devDependencies": {
     "express": "^4.17.1"
+  },
+  "dependencies": {
+    "request-ip": "^2.1.3"
   }
 }

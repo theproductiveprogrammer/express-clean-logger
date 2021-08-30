@@ -1,4 +1,5 @@
 'use strict'
+const reqIp = require('request-ip')
 
 const mon = [
   "01",
@@ -40,7 +41,7 @@ module.exports = name => {
 
       const url = req.originalUrl || req.url
       const ms = Math.round(Number(process.hrtime.bigint() - start)/1e6)
-      const msg = `${dt} +${ms} ${req.method} ${url}`
+      const msg = `${dt} +${ms} ${req.method} ${url} ${reqIp.getClientIp(req)}`
       console.log(msg)
     }
   }
