@@ -43,7 +43,8 @@ module.exports = name => {
       const url = req.originalUrl || req.url
       const ms = Math.round(Number(process.hrtime.bigint() - start)/1e6)
       const ua_ = ua.lookup(req.headers['user-agent'])
-      const msg = `${dt} +${ms} ${req.method} ${url} ${reqIp.getClientIp(req)} ${ua_.family}/${ua_.os.family}/${ua_.device.family}`
+      const st = res.statusCode >= 400 ? "!" + res.statusCode + "! " : ""
+      const msg = `${dt} +${ms} ${st}${req.method} ${url} ${reqIp.getClientIp(req)} ${ua_.family}/${ua_.os.family}/${ua_.device.family}`
       out.add(msg)
     }
   }

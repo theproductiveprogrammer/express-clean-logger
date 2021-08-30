@@ -30,6 +30,11 @@ The output contains all the main useful information needed:
 2021-08-30 00:31:02 +0 GET /test/page2 ::1 Safari/Mac OS X/Other
 2021-08-30 00:31:12 +0 GET /about/this ::1 Chrome/Windows/Other
 2021-08-30 00:33:20 +4 GET /price/pkg ::1 Mobile Safari/iOS/iPhone
+
+...
+
+(on error - status code is shown)
+2021-08-30 12:30:21 +1 !404! GET /aboutme ::1 Chrome/Mac OS X/Other
 ...
 
 ```
