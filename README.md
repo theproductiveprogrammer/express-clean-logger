@@ -34,7 +34,7 @@ The output contains all the main useful information needed:
 ...
 
 (on error - status code is shown)
-2021-08-30 12:30:21 +1 !404! GET /aboutme ::1 Chrome/Mac OS X/Other
+!404! 2021-08-30 12:30:21 +1 GET /aboutme ::1 Chrome/Mac OS X/Other
 ...
 
 ```
