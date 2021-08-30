@@ -25,6 +25,7 @@
     "express": "^4.17.1"
   },
   "dependencies": {
+    "baby-db": "^2.1.0",
     "request-ip": "^2.1.3",
     "useragent": "*"
   }

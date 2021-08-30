@@ -1,6 +1,7 @@
 'use strict'
 const reqIp = require('request-ip')
 const ua = require('useragent')
+const baby = require('baby-db')
 
 function p(n) {
   if(n < 10) return "0" + n
@@ -16,6 +17,15 @@ let dt = dt__()
 setInterval(() => dt = dt__(), 500)
 
 module.exports = name => {
+
+  const out = baby(name, {
+    loadOnStart: false,
+    saveEvery: 100,
+    maxRecsEvery: 10000,
+    rolloverLimit: 10000,
+    parseJSON: false,
+  })
+
   return (req, res, next) => {
     const start = process.hrtime.bigint()
     let logged
@@ -34,7 +44,7 @@ module.exports = name => {
       const ms = Math.round(Number(process.hrtime.bigint() - start)/1e6)
       const ua_ = ua.lookup(req.headers['user-agent'])
       const msg = `${dt} +${ms} ${req.method} ${url} ${reqIp.getClientIp(req)} ${ua_.family}/${ua_.os.family}/${ua_.device.family}`
-      console.log(msg)
+      out.add(msg)
     }
   }
 }

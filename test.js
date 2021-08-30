@@ -4,7 +4,7 @@ const app = express()
 
 const logger = require('./')
 
-app.use(logger())
+app.use(logger()) // or app.use(logger("log.txt"))
 
 app.get('/', (req, res) => {
   res.send("Hello world!")
