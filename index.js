@@ -1,8 +1,11 @@
 'use strict'
 
+setInterval(() => {
+  dt = (new Date()).toISOString()
+}, 500)
+
 module.exports = name => {
   return (req, res, next) => {
-    const dt = (new Date()).toISOString()
     const start = process.hrtime.bigint()
     let logged
 
