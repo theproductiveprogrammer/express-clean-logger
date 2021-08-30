@@ -20,8 +20,8 @@ app.use(clogger("/var/logs/myapp.log"))
 The output contains all the main useful information needed:
 
 ```
-2021-08-29T22:41:47.096Z +200 /url/path 100.172.88.84 Chrome Mobile/Android/Generic Smartphone
+2021-08-29 22:41:47 +20 GET /url/path 100.172.88.84 Chrome Mobile/Android/Generic Smartphone
 
----- date/time --------- time --- url ------ ip ------------------- user agent ---------------
-                     taken in ms
+---- date/time ---- time ---- url -------- ip ------------------- user agent ---------------
+      in UTC     taken in ms
 ```

@@ -1,8 +1,27 @@
 'use strict'
 
-setInterval(() => {
-  dt = (new Date()).toISOString()
-}, 500)
+const mon = [
+  "01",
+  "02",
+  "03",
+  "04",
+  "05",
+  "06",
+  "07",
+  "08",
+  "09",
+  "10",
+  "11",
+  "12",
+]
+
+function dt__() {
+  const dt = new Date()
+  return `${dt.getUTCFullYear()}-${mon[dt.getUTCMonth()]}-${dt.getUTCDate()} ${dt.getUTCHours()}:${dt.getUTCMinutes()}:${dt.getUTCSeconds()}`
+}
+
+let dt = dt__()
+setInterval(() => dt = dt__(), 500)
 
 module.exports = name => {
   return (req, res, next) => {
