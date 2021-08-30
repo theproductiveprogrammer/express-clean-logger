@@ -1,7 +1,7 @@
 {
   "name": "express-clean-logger",
   "version": "1.0.0",
-  "description": "A fast logger for ExpressJS with useful information cleanly shown",
+  "description": "A blazing fast and useful logger for ExpressJS with key information cleanly shown",
   "main": "index.js",
   "scripts": {
     "test": "node test.js"

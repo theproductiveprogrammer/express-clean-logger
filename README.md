@@ -1,4 +1,4 @@
-# A Useful Request Logger for ExpressJS
+# A Fast & Useful Request Logger for ExpressJS
 
 This module outputs clean logs that outputs useful information for ExpressJS request/responses.
 
