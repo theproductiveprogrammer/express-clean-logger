@@ -40,12 +40,23 @@ module.exports = name => {
       if(logged) return
       logged = true
 
-      const url = req.originalUrl || req.url
       const ms = Math.round(Number(process.hrtime.bigint() - start)/1e6)
       const ua_ = ua.lookup(req.headers['user-agent'])
-      const st = res.statusCode >= 400 ? "!" + res.statusCode + "! " : ""
-      const msg = `${st}${dt} +${ms} ${req.method} ${url} ${reqIp.getClientIp(req)} ${ua_.family}/${ua_.os.family}/${ua_.device.family}`
+      const st = st_()
+      const msg = `${st.st}${dt} +${ms} ${st.code}${req.method} ${st.url} ${reqIp.getClientIp(req)} ${ua_.family}/${ua_.os.family}/${ua_.device.family}`
       out.add(msg)
+    }
+
+    function st_() {
+      let url = req.originalUrl || req.url
+      if(res.statusCode === 200 || res.statusCode === 304) return { st: " ", code: "", url }
+      if(res.statusCode < 300) return { st: " ",  code: `(${res.statusCode}) `, url }
+      if(res.statusCode < 400) {
+        const loc = res.getHeader('location')
+        if(loc) url = `${url} -> ${loc}`
+        return { st: ">", code: `(${res.statusCode}) `, url}
+      }
+      return { st: "!", code: `(${res.statusCode}) `, url }
     }
   }
 }
