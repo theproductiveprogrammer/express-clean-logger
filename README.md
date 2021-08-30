@@ -24,4 +24,14 @@ The output contains all the main useful information needed:
 
 ---- date/time ---- time ---- url -------- ip ------------------- user agent ---------------
       in UTC     taken in ms
+
+...
+2021-08-30 00:30:59 +3 GET /test/page1 ::1 curl/Other/Other
+2021-08-30 00:31:02 +0 GET /test/page2 ::1 Safari/Mac OS X/Other
+2021-08-30 00:31:12 +0 GET /about/this ::1 Chrome/Windows/Other
+2021-08-30 00:33:20 +4 GET /price/pkg ::1 Mobile Safari/iOS/iPhone
+...
+
 ```
+
+Enjoy!
