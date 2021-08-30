@@ -2,24 +2,14 @@
 const reqIp = require('request-ip')
 const ua = require('useragent')
 
-const mon = [
-  "01",
-  "02",
-  "03",
-  "04",
-  "05",
-  "06",
-  "07",
-  "08",
-  "09",
-  "10",
-  "11",
-  "12",
-]
+function p(n) {
+  if(n < 10) return "0" + n
+  else return n
+}
 
 function dt__() {
   const dt = new Date()
-  return `${dt.getUTCFullYear()}-${mon[dt.getUTCMonth()]}-${dt.getUTCDate()} ${dt.getUTCHours()}:${dt.getUTCMinutes()}:${dt.getUTCSeconds()}`
+  return `${dt.getUTCFullYear()}-${p(dt.getUTCMonth()+1)}-${p(dt.getUTCDate())} ${p(dt.getUTCHours())}:${p(dt.getUTCMinutes())}:${p(dt.getUTCSeconds())}`
 }
 
 let dt = dt__()
