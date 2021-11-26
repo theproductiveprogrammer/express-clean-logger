@@ -51,8 +51,8 @@ module.exports = (name, opts) => {
       const ms = Math.round(Number(process.hrtime.bigint() - start)/1e6)
       const ua_ = ua.lookup(req.headers['user-agent'])
       const st = st_()
-      const sent_ = logErrSent_()
-      const msg = `${st.st}${dt} +${ms} ${st.code}${req.method} ${st.url} ${reqIp.getClientIp(req)} ${ua_.family}/${ua_.os.family}/${ua_.device.family}${sent_}`
+      const umsg_ = usermsg_()
+      const msg = `${st.st}${dt} +${ms} ${st.code}${req.method} ${st.url} ${reqIp.getClientIp(req)} ${ua_.family}/${ua_.os.family}/${ua_.device.family}${umsg_}`
       out.add(msg)
       con(msg)
     }
@@ -69,15 +69,21 @@ module.exports = (name, opts) => {
       return { st: "!", code: `(${res.statusCode}) `, url }
     }
 
-    function logErrSent_() {
-      if(!sent) return ""
-      if(res.statusCode === 200 || res.statusCode === 304) return ""
-      if(sent === "object") {
+    function usermsg_() {
+      if(res.statusCode === 200 || res.statusCode === 304) sent = ""
+      if(!sent && !res.cl_msg) return ""
+      return m_(res.cl_msg) + m_(sent)
+    }
+
+    function m_(s) {
+      if(!s) return ""
+      if(typeof s === "object") {
         try {
-          sent = JSON.stringify(sent)
+          s = JSON.stringify(s)
         } catch(e) {}
       }
-      return " > " + sent
+      return " > " + s
     }
   }
 }
+
