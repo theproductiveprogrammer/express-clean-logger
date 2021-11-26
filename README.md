@@ -42,4 +42,14 @@ The output contains all the main useful information needed:
 
 ```
 
+## Echoing
+
+If you want to echo the output along with writing to the file provide the `{echo: true}` parameter:
+
+```javascript
+app.use(clogger("/var/logs/myapp.log", { echo: true }))
+```
+
+
+
 Enjoy!
