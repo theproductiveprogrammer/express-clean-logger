@@ -42,6 +42,14 @@ The output contains all the main useful information needed:
 
 ```
 
+## Additional Info
+
+When the response is an error, any error `res.sent()` back to the user will also be added to the log. If you would like to specifically add details to the log set the `res.cl_msg` field on the response and it will be logged out:
+
+```javascript
+res.cl_msg = "some details"
+```
+
 ## Echoing
 
 If you want to echo the output along with writing to the file provide the `{echo: true}` parameter:
