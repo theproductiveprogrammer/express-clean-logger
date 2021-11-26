@@ -16,8 +16,9 @@ function dt__() {
 let dt = dt__()
 setInterval(() => dt = dt__(), 500)
 
-module.exports = name => {
+module.exports = (name, opts) => {
 
+  const con = name && opts && opts.echo ? msg => console.log(msg) : () => 1
   const out = baby(name, {
     loadOnStart: false,
     saveEvery: 100,
@@ -53,6 +54,7 @@ module.exports = name => {
       const sent_ = logErrSent_()
       const msg = `${st.st}${dt} +${ms} ${st.code}${req.method} ${st.url} ${reqIp.getClientIp(req)} ${ua_.family}/${ua_.os.family}/${ua_.device.family}${sent_}`
       out.add(msg)
+      con(msg)
     }
 
     function st_() {
