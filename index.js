@@ -29,6 +29,13 @@ module.exports = name => {
   return (req, res, next) => {
     const start = process.hrtime.bigint()
     let logged
+    const send = res.send
+    let sent
+    res.send = content => {
+      res.send = send
+      res.send(content)
+      sent = content
+    }
 
     res.on('finish', log_)
     res.on('error', log_)
@@ -43,7 +50,8 @@ module.exports = name => {
       const ms = Math.round(Number(process.hrtime.bigint() - start)/1e6)
       const ua_ = ua.lookup(req.headers['user-agent'])
       const st = st_()
-      const msg = `${st.st}${dt} +${ms} ${st.code}${req.method} ${st.url} ${reqIp.getClientIp(req)} ${ua_.family}/${ua_.os.family}/${ua_.device.family}`
+      const sent_ = logErrSent_()
+      const msg = `${st.st}${dt} +${ms} ${st.code}${req.method} ${st.url} ${reqIp.getClientIp(req)} ${ua_.family}/${ua_.os.family}/${ua_.device.family}${sent_}`
       out.add(msg)
     }
 
@@ -57,6 +65,17 @@ module.exports = name => {
         return { st: ">", code: `(${res.statusCode}) `, url}
       }
       return { st: "!", code: `(${res.statusCode}) `, url }
+    }
+
+    function logErrSent_() {
+      if(!sent) return ""
+      if(res.statusCode === 200 || res.statusCode === 304) return ""
+      if(sent === "object") {
+        try {
+          sent = JSON.stringify(sent)
+        } catch(e) {}
+      }
+      return " > " + sent
     }
   }
 }
