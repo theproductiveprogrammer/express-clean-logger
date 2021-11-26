@@ -37,7 +37,7 @@ The output contains all the main useful information needed:
 >2021-08-30 12:30:21 +1 (301) GET /aboutme -> /gohere ::1 Chrome/Mac OS X/Other
 
 (on error)
-!2021-08-30 12:38:17 +2 (404) GET /gohere ::1 Chrome/Mac OS X/Other
+!2021-08-30 12:38:17 +2 (404) GET /gohere ::1 Chrome/Mac OS X/Other > error sent
 ...
 
 ```
