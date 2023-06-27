@@ -39,6 +39,7 @@ module.exports = (name, opts) => {
     }
 
     res.on('finish', log_)
+    res.on('close', log_)
     res.on('error', log_)
 
     next()
@@ -57,8 +58,15 @@ module.exports = (name, opts) => {
       con(msg)
     }
 
+    function referrer_(url) {
+      const r = req.get('Referrer')
+      if(!r) return url
+      else return `${r} -> ${url}`
+    }
+
     function st_() {
       let url = req.originalUrl || req.url
+      url = referrer_(url)
       if(res.statusCode === 200 || res.statusCode === 304) return { st: " ", code: "", url }
       if(res.statusCode < 300) return { st: " ",  code: `(${res.statusCode}) `, url }
       if(res.statusCode < 400) {
