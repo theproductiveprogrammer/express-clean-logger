@@ -11,7 +11,9 @@ app.use(clogger())
 
 ```
 
-You can also log to a file (which will rollover ever 10,000 logs)
+Remember to set the logger middleware before any actual processing (including `express.static()`).
+
+You can also log to a file (which will rollover every 10,000 logs)
 
 ```javascript
 app.use(clogger("/var/logs/myapp.log"))
